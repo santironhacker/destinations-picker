@@ -40,6 +40,15 @@ function App() {
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
       return [place, ...prevPickedPlaces];
     });
+
+    const storedPlacesIds =
+      JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    if (storedPlacesIds.indexOf(id) === -1) {
+      localStorage.setItem(
+        "selectedPlaces",
+        JSON.stringify([id, ...storedPlacesIds])
+      );
+    }
   }
 
   function handleRemovePlace() {
