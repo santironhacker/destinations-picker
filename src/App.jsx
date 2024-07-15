@@ -74,12 +74,14 @@ function App() {
 
   return (
     <>
-      <Modal openProp={isModalOpen} onCloseModal={handleStopRemovePlace}>
-        <DeleteConfirmation
-          onCancel={handleStopRemovePlace}
-          onConfirm={handleRemovePlace}
-        />
-      </Modal>
+      {isModalOpen && (
+        <Modal openProp={isModalOpen}>
+          <DeleteConfirmation
+            onCancel={handleStopRemovePlace}
+            onConfirm={handleRemovePlace}
+          />
+        </Modal>
+      )}
 
       <header>
         <img src={logoImg} alt="Stylized globe" />
